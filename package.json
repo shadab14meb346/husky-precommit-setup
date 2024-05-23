@@ -1,0 +1,33 @@
+{
+  "name": "pre-commit-hook-demo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier -w .",
+    "format:check": "prettier -c .",
+  },
+
+  "devDependencies": {
+    "husky": "4.3.0",
+    "lint-staged": "12.3.5",
+    "prettier": "^3.2.5",
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --max-warnings=0",
+      "prettier -w"
+    ],
+    "src/**/*.{json,css,scss,md}": [
+      "prettier -w"
+    ]
+  }
+}
